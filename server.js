@@ -1,6 +1,7 @@
 // server.js
 import express from "express";
 import cors from "cors";
+import dietRoutes from "./routes/diet.js";  // ✅ added
 
 const app = express();
 app.use(cors());
@@ -11,7 +12,8 @@ app.get("/", (req, res) => {
   res.json({ message: "Olympia AI Backend is running ✅" });
 });
 
-// More routes will go here (muscle, diet, trainer, etc.)
+// ✅ our new diet API
+app.use("/diet", dietRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
